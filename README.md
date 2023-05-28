@@ -1,7 +1,6 @@
 # belly-button-challenge
-Deployment link can be found here https://vdescioli.github.io/
-Main directory contains index.html
-Static directory contains app.js file
+Deployment link can be found here https://vdescioli.github.io/ .\
+Main directory contains index.html file and "static" folder which contains app.js file.
 
 # Background
 In this assignment, you will build an interactive dashboard to explore the Belly Button Biodiversity datasetLinks to an external site., which catalogs the microbes that colonize human navels.
