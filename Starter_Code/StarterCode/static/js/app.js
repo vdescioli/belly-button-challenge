@@ -79,5 +79,7 @@ function charts(sample) {
 
     });
 };
-
+function optionChanged(newSelection) {
+    charts(newSelection);
+};
 init();
