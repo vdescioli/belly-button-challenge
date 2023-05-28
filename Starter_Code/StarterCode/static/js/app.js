@@ -21,7 +21,7 @@ function init() {
     });
 };
 
-//  Bar Chart & Bubble Chart
+//  Bar Chart, Bubble Chart, MetaData
 function charts(sample) {
     d3.json(url).then(function(data) {
 
@@ -49,11 +49,35 @@ function charts(sample) {
             orientation: "h"
         }];
         let layout = {
-            title: `Top 10 OTU's found in ${selection}`
+            title: `Top 10 OTU's found`
         };
         Plotly.newPlot("bar",trace,layout);
 
-    });
+        // Bubble plot parameters
+        let btrace = [{
+            x: otuIds,
+            y: values,
+            text: labels,
+            mode: "markers",
+            marker: {
+                size: values,
+                color: otuIds
+            }
+        }];
+        let blayout = {
+            xaxis: {title: "OTU ID"}
+        };
+        Plotly.newPlot("bubble",btrace,blayout);
 
+        // Getting metadata
+        var metadata = data.metadata;
+        var mresults = metadata.filter(UserInput)[0];
+        var infoTable = d3.select("#sample-metadata").html("");
+        Object.entries(mresults).forEach(([key,value]) => {
+            infoTable.append("h5").text(`${key}: ${value}`);                        
+        });
+
+    });
 };
+
 init();
